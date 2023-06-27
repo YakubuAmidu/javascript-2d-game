@@ -6,5 +6,31 @@ window.addEventListener('load', function(){
     canvas.width = 800;
     canvas.height = 750;
 
+    class InputHandler{
 
+    };
+
+    class Player {
+
+    }
+
+    class Background {
+
+    }
+
+    class Enemy {
+
+    }
+
+    function HandleEnemies() {
+
+    }
+
+    function DisplayStatusText() {
+
+    }
+
+    function Animate() {
+
+    }
 })
