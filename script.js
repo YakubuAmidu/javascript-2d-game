@@ -39,11 +39,13 @@ window.addEventListener('load', function(){
           this.height = 200;
           this.x = 0;
           this.y = this.gameHeight - this.height;
+          this.image = document.getElementById('playerImage');
        }
 
        draw(context){
            context.fillStyle = 'white';
            context.fillRect(this.x, this.y, this.width, this.height);
+           context.drawImage(this.image, 0, 0);
        }
 
        update(){
@@ -71,8 +73,9 @@ window.addEventListener('load', function(){
     const player = new Player(canvas.width, canvas.height);
 
     function animate() {
-         player.draw(ctx);
-         player.update();
+       ctx.clearRect(0, 0, canvas.width, canvas.height);
+       player.draw(ctx);
+       player.update();
        requestAnimationFrame(animate);
     }
 
