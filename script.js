@@ -61,6 +61,9 @@ window.addEventListener('load', function(){
           } else {
             this.speed = 0;
           }
+
+          if (this.x < 0) this.x = 0;
+          else if (this.x > this.gameWidth - this.width) this.x = this.gameWidth - this.width;
        }
     }
 
