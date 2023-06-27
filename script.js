@@ -45,6 +45,10 @@ window.addEventListener('load', function(){
            context.fillStyle = 'white';
            context.fillRect(this.x, this.y, this.width, this.height);
        }
+
+       update(){
+          this.x++;
+       }
     }
 
     class Background {
@@ -65,9 +69,12 @@ window.addEventListener('load', function(){
 
     const input = new InputHandler();
     const player = new Player(canvas.width, canvas.height);
-    player.draw(ctx);
 
     function animate() {
-
+         player.draw(ctx);
+         player.update();
+       requestAnimationFrame(animate);
     }
-})
+
+    animate();
+});
