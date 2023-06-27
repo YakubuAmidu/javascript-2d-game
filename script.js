@@ -4,10 +4,18 @@ window.addEventListener('load', function(){
     const ctx = canvas.getContext('2d');
 
     canvas.width = 800;
-    canvas.height = 750;
+    canvas.height = 720;
 
     class InputHandler{
-
+        constructor(){
+            this.keys = [];
+            window.addEventListener('keydown', e => {
+                if(e.key == 'ArrowDown'){
+                    this.keys.push(e.key);
+                }
+                console.log('E.KEY: ', e.key, 'THIS.KEYS: ', this.keys);
+            })
+        }
     };
 
     class Player {
@@ -22,15 +30,17 @@ window.addEventListener('load', function(){
 
     }
 
-    function HandleEnemies() {
+    function handleEnemies() {
 
     }
 
-    function DisplayStatusText() {
+    function displayStatusText() {
 
     }
 
-    function Animate() {
+    const input = new InputHandler();
+
+    function animate() {
 
     }
 })
