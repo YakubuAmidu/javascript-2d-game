@@ -1,9 +1,0 @@
-#canvas1 {
-  position: absolute;
-  background-image: linear-gradient(to right bottom, rgba(211, 211, 211, 0.2), rgba(163, 161, 161, 0.6), rgba(118, 117, 117, 0.8));
-  border: 1.5px solid #000;
-  width: 800px;
-  height: 700px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); }

@@ -1,0 +1,10 @@
+#canvas1 {
+    position: absolute;
+    background-image: linear-gradient(to right bottom, $color-light-gray, $color-medium-gray, $color-dark-gray);
+    border: 1.5px solid $color-black;
+    width: 800px;
+    height: 700px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
