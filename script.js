@@ -161,7 +161,10 @@ window.addEventListener('load', function(){
         }
 
         this.x -= this.speed;
-        if(this.x < 0 - this.width) this.markedForDeletion = true;
+        if(this.x < 0 - this.width) {
+            this.markedForDeletion = true;
+            score++;
+        }
        }
     }
 
@@ -185,9 +188,11 @@ window.addEventListener('load', function(){
     }
 
     function displayStatusText(context) {
-        context.fillStyle = 'black';
         context.font = '40px Helvetica';
+        context.fillStyle = 'black';
         context.fillText('Score: ' + score, 20, 50);
+        context.fillStyle = 'white';
+        context.fillText('Score: ' + score, 22, 52);
     }
 
     const input = new InputHandler();
