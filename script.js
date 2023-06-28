@@ -88,9 +88,11 @@ window.addEventListener('load', function(){
          this.y += this.vy;
          if (!this.onGround()){
             this.vy += this.weight;
+            this.maxFrame = 5;
             this.frameY = 1;
          } else {
             this.vy = 0;
+            this.maxFrame = 8;
             this.frameY = 0;
          }
 
@@ -140,6 +142,7 @@ window.addEventListener('load', function(){
         this.frameTimer = 0;
         this.frameInterval = 1000 / this.fps;
         this.speed = 8;
+        this.markedForDeletion = false;
        }
 
        draw(context){
@@ -156,12 +159,14 @@ window.addEventListener('load', function(){
         }
 
         this.x -= this.speed;
+        if(this.x < 0 - this.width) this.markedForDeletion = true;
        }
     }
 
     function handleEnemies(deltaTime) {
        if(enemyTimer > enemyInterval + randomEnemyInterval) {
           enemies.push(new Enemy(canvas.width, canvas.height));
+          console.log('Enemies: ', enemies);
           randomEnemyInterval = Math.random() * 1000 + 500;
           console.log('RandomEnemyInterval: ', randomEnemyInterval);
           enemyTimer = 0;
@@ -172,7 +177,9 @@ window.addEventListener('load', function(){
        enemies.forEach(enemy => {
         enemy.draw(ctx);
         enemy.update(deltaTime);
-       })
+       });
+
+       enemies = enemies.filter(enemy => !enemy.markedForDeletion);
     }
 
     function displayStatusText() {
