@@ -37,6 +37,18 @@ window.addEventListener('load', function(){
         }
     };
 
+    window.addEventListener('touchstart', e => {
+        console.log('start');
+    });
+
+    window.addEventListener('touchmove', e => {
+        console.log('moving');
+    });
+
+    window.addEventListener('touchend', e => {
+        console.log('end');
+    });
+
     class Player {
        constructor(gameWidth, gameHeight){
           this.gameWidth = gameWidth;
@@ -61,7 +73,7 @@ window.addEventListener('load', function(){
         this.x = 100;
         this.y = this.gameHeight - this.gameHeight;
         this.maxFrame = 8;
-        this.fameY = 0;
+        this.frameY = 0;
        }
 
        draw(context){
@@ -210,9 +222,7 @@ window.addEventListener('load', function(){
     function handleEnemies(deltaTime) {
        if(enemyTimer > enemyInterval + randomEnemyInterval) {
           enemies.push(new Enemy(canvas.width, canvas.height));
-          console.log('Enemies: ', enemies);
           randomEnemyInterval = Math.random() * 1000 + 500;
-          console.log('RandomEnemyInterval: ', randomEnemyInterval);
           enemyTimer = 0;
        } else {
           enemyTimer += deltaTime;
@@ -227,6 +237,7 @@ window.addEventListener('load', function(){
     }
 
     function displayStatusText(context) {
+        context.textAlign = 'left';
         context.font = '40px Helvetica';
         context.fillStyle = 'black';
         context.fillText('Score: ' + score, 20, 50);
@@ -236,9 +247,9 @@ window.addEventListener('load', function(){
         if(gameOver){
             context.textAlign = 'center';
             context.fillStyle = 'black';
-            context.fillText('Game Over, try again...', canvas.width / 2, 200);
+            context.fillText('Game Over, press Enter to restart...', canvas.width / 2, 200);
             context.fillStyle = 'white';
-            context.fillText('Game Over, try again...', canvas.width / 2 + 2, 202);
+            context.fillText('Game Over, press Enter to restart...', canvas.width / 2 + 2, 202);
         }
     }
 
