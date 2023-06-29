@@ -15,6 +15,8 @@ window.addEventListener('load', function(){
     class InputHandler{
         constructor(){
             this.keys = [];
+            this.touchY = '';
+            this.touchTreshold = 30;
             window.addEventListener('keydown', e => {
                 if ((e.key === 'ArrowDown' || 
                     e.key === 'ArrowUp' ||
@@ -38,16 +40,15 @@ window.addEventListener('load', function(){
     };
 
     window.addEventListener('touchstart', e => {
-        console.log('start');
-        console.log(e);
+        console.log(e.changedTouches[0].pageY);
     });
 
     window.addEventListener('touchmove', e => {
-        console.log('moving');
+        console.log(e.changedTouches[0].pageY);
     });
 
     window.addEventListener('touchend', e => {
-        console.log('end');
+        console.log(e.changedTouches[0].pageY);
     });
 
     class Player {

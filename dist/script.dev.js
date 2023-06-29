@@ -22,6 +22,8 @@ window.addEventListener('load', function () {
     _classCallCheck(this, InputHandler);
 
     this.keys = [];
+    this.touchY = '';
+    this.touchTreshold = 30;
     window.addEventListener('keydown', function (e) {
       if ((e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'ArrowRight') && _this.keys.indexOf(e.key) === -1) {
         _this.keys.push(e.key);
@@ -36,14 +38,13 @@ window.addEventListener('load', function () {
 
   ;
   window.addEventListener('touchstart', function (e) {
-    console.log('start');
-    console.log(e);
+    console.log(e.changedTouches[0].pageY);
   });
   window.addEventListener('touchmove', function (e) {
-    console.log('moving');
+    console.log(e.changedTouches[0].pageY);
   });
   window.addEventListener('touchend', function (e) {
-    console.log('end');
+    console.log(e.changedTouches[0].pageY);
   });
 
   var Player =
