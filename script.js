@@ -43,7 +43,7 @@ window.addEventListener('load', function(){
           this.gameHeight = gameHeight;
           this.width = 200;
           this.height = 200;
-          this.x = 0;
+          this.x = 100;
           this.y = this.gameHeight - this.height;
           this.image = document.getElementById('playerImage');
           this.frameX = 0;
@@ -55,6 +55,13 @@ window.addEventListener('load', function(){
           this.speed = 0;
           this.vy = 0;
           this.weight = 1;
+       }
+
+       restart(){
+        this.x = 100;
+        this.y = this.gameHeight - this.gameHeight;
+        this.maxFrame = 8;
+        this.fameY = 0;
        }
 
        draw(context){
@@ -230,6 +237,8 @@ window.addEventListener('load', function(){
             context.fillText('Game Over, try again...', canvas.width / 2 + 2, 202);
         }
     }
+
+
 
     const input = new InputHandler();
     const player = new Player(canvas.width, canvas.height);
