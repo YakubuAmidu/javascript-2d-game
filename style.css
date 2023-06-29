@@ -1,12 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
 body {
   background-color: black; }
 
 #canvas1 {
   position: absolute;
-  border: 1.5px solid #fff;
+  border: 5px solid #fff;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); }
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%; }
 
 #playerImage, #backgroundImage, #enemyImage {
   display: none; }
