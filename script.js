@@ -238,7 +238,9 @@ window.addEventListener('load', function(){
         }
     }
 
-
+    function restartGame(){
+        player.restart();
+    }
 
     const input = new InputHandler();
     const player = new Player(canvas.width, canvas.height);
