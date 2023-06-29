@@ -37,6 +37,7 @@ window.addEventListener('load', function () {
   ;
   window.addEventListener('touchstart', function (e) {
     console.log('start');
+    console.log(e);
   });
   window.addEventListener('touchmove', function (e) {
     console.log('moving');
