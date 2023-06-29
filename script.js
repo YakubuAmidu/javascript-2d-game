@@ -22,7 +22,7 @@ window.addEventListener('load', function(){
                     e.key === 'ArrowRight' ) 
                     && this.keys.indexOf(e.key) === -1){
                     this.keys.push(e.key);
-                }
+                } else if (e.key === 'Enter' && gameOver) restartGame();
             });
 
             window.addEventListener('keyup', e => {
@@ -244,6 +244,11 @@ window.addEventListener('load', function(){
 
     function restartGame(){
         player.restart();
+        background.restart();
+        enemies = [];
+        score = 0;
+        gameOver = false;
+        animate(0);
     }
 
     const input = new InputHandler();
@@ -260,7 +265,7 @@ window.addEventListener('load', function(){
        lastTime = timestamp;
        ctx.clearRect(0, 0, canvas.width, canvas.height);
        background.draw(ctx);
-       //background.update();
+       background.update();
        player.draw(ctx);
        player.update(input, deltaTime, enemies);
        handleEnemies(deltaTime);
