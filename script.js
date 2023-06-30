@@ -39,20 +39,6 @@ window.addEventListener('load', function(){
         }
     };
 
-    window.addEventListener('touchstart', e => {
-        this.touchY = e.changedTouches[0].pageY;
-    });
-
-    window.addEventListener('touchmove', e => {
-        const swipeDistance = e.changedTouches[0].pageY - this.touchY;
-        if(swipeDistance < - this.touchTreshold && this.keys.indexOf('swipe up' === - 1)) this.keys.push('swipe up');
-        else if (swipeDistance > this.touchTreshold && this.keys.indexOf('swipe down' === - 1)) this.keys.push('swipe down');
-    });
-
-    window.addEventListener('touchend', e => {
-        console.log(this.keys);
-    });
-
     class Player {
        constructor(gameWidth, gameHeight){
           this.gameWidth = gameWidth;
@@ -199,9 +185,8 @@ window.addEventListener('load', function(){
         context.arc(this.x + this.width / 2, this.y + this.height / 2, this.width / 2, 0, Math.PI * 2);
         context.stroke();
         context.strokeStyle = 'blue';
-        context.strokeRect(this.x, this.y, this.width, this.height);
         context.beginPath();
-        context.arc(this.x, this.y, this.width / 2, this.height, Math.PI * 2);
+        context.arc(this.x, this.y, this.width / 2, 0, Math.PI * 2);
         context.stroke();
         context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y, this.width, this.height);
        };
