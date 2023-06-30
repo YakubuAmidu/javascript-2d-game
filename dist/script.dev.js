@@ -7,6 +7,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 window.addEventListener('load', function () {
+  var _this2 = this;
+
   console.log('Hello...');
   var canvas = document.getElementById('canvas1');
   var ctx = canvas.getContext('2d');
@@ -38,13 +40,14 @@ window.addEventListener('load', function () {
 
   ;
   window.addEventListener('touchstart', function (e) {
-    console.log(e.changedTouches[0].pageY);
+    _this2.touchY = e.changedTouches[0].pageY;
   });
   window.addEventListener('touchmove', function (e) {
-    console.log(e.changedTouches[0].pageY);
+    var swipeDistance = e.changedTouches[0].pageY - _this2.touchY;
+    if (swipeDistance < -_this2.touchTreshold && _this2.keys.indexOf('swipe up' === -1)) _this2.keys.push('swipe up');else if (swipeDistance > _this2.touchTreshold && _this2.keys.indexOf('swipe down' === -1)) _this2.keys.push('swipe down');
   });
   window.addEventListener('touchend', function (e) {
-    console.log(e.changedTouches[0].pageY);
+    console.log(_this2.keys);
   });
 
   var Player =
@@ -96,15 +99,15 @@ window.addEventListener('load', function () {
     }, {
       key: "update",
       value: function update(input, deltaTime, enemies) {
-        var _this2 = this;
+        var _this3 = this;
 
         // Collision detection
         enemies.forEach(function (enemy) {
-          var dx = enemy.x + enemy.width / 2 - (_this2.x + _this2.width / 2);
-          var dy = enemy.y + enemy.height / 2 - (_this2.y + _this2.height / 2);
+          var dx = enemy.x + enemy.width / 2 - (_this3.x + _this3.width / 2);
+          var dy = enemy.y + enemy.height / 2 - (_this3.y + _this3.height / 2);
           var distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < enemy.width / 2 + _this2.width / 2) {
+          if (distance < enemy.width / 2 + _this3.width / 2) {
             gameOver = true;
           }
         }); // sprite animation
