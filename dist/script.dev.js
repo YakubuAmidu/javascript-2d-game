@@ -39,7 +39,11 @@ window.addEventListener('load', function () {
     });
     window.addEventListener('touchmove', function (e) {
       var swipeDistance = e.changedTouches[0].pageY - _this.touchY;
-      if (swipeDistance < -_this.touchTreshold && _this.keys.indexOf('swipe up') === -1) _this.keys.push('swipe up');else if (swipeDistance > _this.touchTreshold && _this.keys.indexOf('swipe down') === -1) _this.keys.push('swipe down');
+      if (swipeDistance < -_this.touchTreshold && _this.keys.indexOf('swipe up') === -1) _this.keys.push('swipe up');else if (swipeDistance > _this.touchTreshold && _this.keys.indexOf('swipe down') === -1) {
+        _this.keys.push('swipe down');
+
+        if (gameOver) restartGame();
+      }
     });
     window.addEventListener('touchend', function (e) {
       _this.keys.splice(_this.keys.indexOf('swipe up'), 1);
@@ -123,7 +127,7 @@ window.addEventListener('load', function () {
           this.speed = 5;
         } else if (input.keys.indexOf('ArrowLeft') > -1) {
           this.speed = -5;
-        } else if (input.keys.indexOf('ArrowUp') > -1 && this.onGround()) {
+        } else if ((input.keys.indexOf('ArrowUp') > -1 || input.keys.indexOf('swipe up') > -1) && this.onGround()) {
           this.vy -= 32;
         } else {
           this.speed = 0;
