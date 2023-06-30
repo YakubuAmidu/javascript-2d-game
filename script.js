@@ -48,7 +48,8 @@ window.addEventListener('load', function(){
             });
 
             window.addEventListener('touchend', e => {
-                console.log(this.keys);
+                this.keys.splice(this.keys.indexOf('swipe up'), 1);
+                this.keys.splice(this.keys.indexOf('swipe down'), 1);
             })
         }
     };
