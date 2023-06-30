@@ -39,7 +39,7 @@ window.addEventListener('load', function () {
     });
     window.addEventListener('touchmove', function (e) {
       var swipeDistance = e.changedTouches[0].pageY - _this.touchY;
-      if (swipeDistance < -_this.touchTreshold && _this.keys.indexOf('swipe up' === -1)) _this.keys.push('swipe up');else if (swipeDistance > _this.touchTreshold && _this.keys.indexOf('swipe down' === -1)) _this.keys.push('swipe down');
+      if (swipeDistance < -_this.touchTreshold && _this.keys.indexOf('swipe up') === -1) _this.keys.push('swipe up');else if (swipeDistance > _this.touchTreshold && _this.keys.indexOf('swipe down') === -1) _this.keys.push('swipe down');
     });
     window.addEventListener('touchend', function (e) {
       console.log(_this.keys);
